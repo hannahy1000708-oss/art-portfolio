@@ -20,6 +20,20 @@ collections:
               { label: "底色（沒有圖片時顯示）", name: "tint", widget: "color", required: false },
             ] }
 
+  - name: "stickers"
+    label: "貼圖"
+    files:
+      - name: "gallery"
+        label: "貼圖列表"
+        file: "content/stickers.json"
+        fields:
+          - { label: "貼圖", name: "items", widget: "list", fields: [
+              { label: "名稱", name: "title", widget: "string" },
+              { label: "圖片", name: "image", widget: "image", required: false },
+              { label: "LINE 貼圖商店連結", name: "link", widget: "string" },
+              { label: "價格（選填）", name: "price", widget: "string", required: false },
+            ] }
+
   - name: "products"
     label: "產品"
     files:

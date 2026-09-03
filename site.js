@@ -30,9 +30,9 @@ function renderGallery(items) {
   });
 }
 
-function renderProducts(items) {
-  const section = document.getElementById('products');
-  const grid = document.getElementById('products-grid');
+function renderLinkedGrid(items, sectionId, gridId, ctaLabel) {
+  const section = document.getElementById(sectionId);
+  const grid = document.getElementById(gridId);
   if (!items || !items.length) {
     section.style.display = 'none';
     return;
@@ -48,7 +48,7 @@ function renderProducts(items) {
         <div class="product-info">
           <h3>${item.title || ''}</h3>
           ${item.price ? `<p>${item.price}</p>` : ''}
-          <span class="product-cta">前往購買 &rarr;</span>
+          <span class="product-cta">${ctaLabel} &rarr;</span>
         </div>
       </a>`;
   }).join('');
@@ -97,10 +97,12 @@ document.addEventListener('keydown', e => {
 
 Promise.all([
   loadJSON('content/works.json'),
+  loadJSON('content/stickers.json'),
   loadJSON('content/products.json'),
   loadJSON('content/settings.json'),
-]).then(([works, products, settings]) => {
+]).then(([works, stickers, products, settings]) => {
   renderGallery((works && works.items) || []);
-  renderProducts((products && products.items) || []);
+  renderLinkedGrid((stickers && stickers.items) || [], 'stickers', 'stickers-grid', '前往貼圖商店');
+  renderLinkedGrid((products && products.items) || [], 'products', 'products-grid', '前往購買');
   renderSettings(settings || {});
 });
