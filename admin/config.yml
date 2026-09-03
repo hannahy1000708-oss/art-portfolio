@@ -20,6 +20,20 @@ collections:
               { label: "底色（沒有圖片時顯示）", name: "tint", widget: "color", required: false },
             ] }
 
+  - name: "products"
+    label: "產品"
+    files:
+      - name: "gallery"
+        label: "產品列表"
+        file: "content/products.json"
+        fields:
+          - { label: "產品", name: "items", widget: "list", fields: [
+              { label: "名稱", name: "title", widget: "string" },
+              { label: "圖片", name: "image", widget: "image", required: false },
+              { label: "購買連結", name: "link", widget: "string", hint: "例如 LINE 貼圖商店、蝦皮、Etsy 的連結" },
+              { label: "價格（選填）", name: "price", widget: "string", required: false },
+            ] }
+
   - name: "settings"
     label: "網站設定"
     files:

@@ -1,6 +1,11 @@
 async function loadJSON(path) {
-  const res = await fetch(path, { cache: 'no-store' });
-  return res.json();
+  try {
+    const res = await fetch(path, { cache: 'no-store' });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch {
+    return null;
+  }
 }
 
 function renderGallery(items) {
@@ -8,7 +13,7 @@ function renderGallery(items) {
   grid.innerHTML = items.map((item, i) => {
     const num = String(i + 1).padStart(2, '0');
     const media = item.image
-      ? `<img src="${item.image}" alt="${item.title}" loading="lazy">`
+      ? `<img src="${item.image}" alt="${item.title || ''}" loading="lazy" data-full="${item.image}">`
       : `<div class="placeholder" style="--tint:${item.tint || '#eee'}"><span>${num}</span></div>`;
     return `
       <figure class="art-card">
@@ -19,6 +24,39 @@ function renderGallery(items) {
         </figcaption>
       </figure>`;
   }).join('');
+
+  grid.querySelectorAll('img[data-full]').forEach(img => {
+    img.addEventListener('click', () => openLightbox(img.dataset.full, img.alt));
+  });
+}
+
+function renderProducts(items) {
+  const section = document.getElementById('products');
+  const grid = document.getElementById('products-grid');
+  if (!items || !items.length) {
+    section.style.display = 'none';
+    return;
+  }
+  section.style.display = '';
+  grid.innerHTML = items.map(item => {
+    const media = item.image
+      ? `<img src="${item.image}" alt="${item.title || ''}" loading="lazy">`
+      : `<div class="placeholder"><span>&#10003;</span></div>`;
+    return `
+      <a class="product-card" href="${item.link || '#'}" target="_blank" rel="noopener">
+        ${media}
+        <div class="product-info">
+          <h3>${item.title || ''}</h3>
+          ${item.price ? `<p>${item.price}</p>` : ''}
+          <span class="product-cta">前往購買 &rarr;</span>
+        </div>
+      </a>`;
+  }).join('');
+}
+
+function toProfileUrl(value, base) {
+  const v = value.trim().replace(/^@/, '');
+  return /^https?:\/\//i.test(v) ? v : base + v;
 }
 
 function renderSettings(s) {
@@ -32,15 +70,37 @@ function renderSettings(s) {
   }
   const socials = document.getElementById('contact-socials');
   const links = [];
-  if (s.instagramUrl) links.push(`<a href="${s.instagramUrl}" target="_blank" rel="noopener">Instagram</a>`);
-  if (s.behanceUrl) links.push(`<a href="${s.behanceUrl}" target="_blank" rel="noopener">Behance</a>`);
+  if (s.instagramUrl) links.push(`<a href="${toProfileUrl(s.instagramUrl, 'https://www.instagram.com/')}" target="_blank" rel="noopener">Instagram</a>`);
+  if (s.behanceUrl) links.push(`<a href="${toProfileUrl(s.behanceUrl, 'https://www.behance.net/')}" target="_blank" rel="noopener">Behance</a>`);
   if (links.length) socials.innerHTML = links.join('');
 }
 
+function openLightbox(src, alt) {
+  const lightbox = document.getElementById('lightbox');
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox-img').alt = alt || '';
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  lightbox.classList.remove('open');
+  document.getElementById('lightbox-img').src = '';
+  document.body.style.overflow = '';
+}
+
+document.getElementById('lightbox').addEventListener('click', closeLightbox);
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLightbox();
+});
+
 Promise.all([
   loadJSON('content/works.json'),
+  loadJSON('content/products.json'),
   loadJSON('content/settings.json'),
-]).then(([works, settings]) => {
-  renderGallery(works.items || []);
+]).then(([works, products, settings]) => {
+  renderGallery((works && works.items) || []);
+  renderProducts((products && products.items) || []);
   renderSettings(settings || {});
 });
