@@ -1,3 +1,24 @@
 {
-  "items": []
+  "items": [
+    {
+      "image": "images/uploads/img_7875.jpeg",
+      "title": "Sunday Bloom Tote",
+      "medium": "Canvas tote, hand-drawn bloom print"
+    },
+    {
+      "title": "Sunlit Sands Mat",
+      "image": "images/uploads/截圖-2026-09-03-晚上10.30.00.png",
+      "medium": "Beach mat for golden afternoons"
+    },
+    {
+      "title": "Petal Hand Cream",
+      "image": "images/uploads/img_7880.jpeg",
+      "medium": "Whipped cream, light floral scent"
+    },
+    {
+      "title": "Sunlit Bloom Tee",
+      "image": "images/uploads/img_7879.jpeg",
+      "medium": "Cotton tee, hand-drawn bloom"
+    }
+  ]
 }
