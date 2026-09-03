@@ -11,7 +11,21 @@
 <body>
 
 <header class="site-header">
-  <div class="logo">Hannah</div>
+  <div class="logo">
+    <span>Hannah</span>
+    <svg class="flower-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M20 22 C20 22 14 30 12 35" stroke="#9caf88" stroke-width="1.4" stroke-linecap="round"/>
+      <path d="M17 30 C15 29 13.5 29.5 12.5 31" stroke="#9caf88" stroke-width="1.2" stroke-linecap="round"/>
+      <g>
+        <ellipse cx="20" cy="12" rx="4.4" ry="6.4" fill="#f2a49b" opacity="0.9"/>
+        <ellipse cx="20" cy="12" rx="4.4" ry="6.4" fill="#f2a49b" opacity="0.9" transform="rotate(72 20 20)"/>
+        <ellipse cx="20" cy="12" rx="4.4" ry="6.4" fill="#f2a49b" opacity="0.9" transform="rotate(144 20 20)"/>
+        <ellipse cx="20" cy="12" rx="4.4" ry="6.4" fill="#f2a49b" opacity="0.9" transform="rotate(216 20 20)"/>
+        <ellipse cx="20" cy="12" rx="4.4" ry="6.4" fill="#f2a49b" opacity="0.9" transform="rotate(288 20 20)"/>
+        <circle cx="20" cy="20" r="3.6" fill="#f4c752"/>
+      </g>
+    </svg>
+  </div>
   <nav>
     <a href="#gallery">作品</a>
     <a href="#about">關於</a>
@@ -20,66 +34,23 @@
 </header>
 
 <section class="hero">
-  <h1>作品集</h1>
-  <p class="hero-sub">Selected Works — 這裡展示我的創作</p>
+  <h1 id="hero-title">作品集</h1>
+  <p class="hero-sub" id="hero-sub">Selected Works — 這裡展示我的創作</p>
 </section>
 
 <section id="gallery" class="gallery">
-  <div class="grid">
-    <figure class="art-card" style="--tint:#e8ded1">
-      <div class="placeholder"><span>01</span></div>
-      <figcaption>
-        <h3>作品標題一</h3>
-        <p>媒材 · 年份</p>
-      </figcaption>
-    </figure>
-    <figure class="art-card" style="--tint:#dbe4e3">
-      <div class="placeholder"><span>02</span></div>
-      <figcaption>
-        <h3>作品標題二</h3>
-        <p>媒材 · 年份</p>
-      </figcaption>
-    </figure>
-    <figure class="art-card" style="--tint:#e6dce6">
-      <div class="placeholder"><span>03</span></div>
-      <figcaption>
-        <h3>作品標題三</h3>
-        <p>媒材 · 年份</p>
-      </figcaption>
-    </figure>
-    <figure class="art-card" style="--tint:#dde3d4">
-      <div class="placeholder"><span>04</span></div>
-      <figcaption>
-        <h3>作品標題四</h3>
-        <p>媒材 · 年份</p>
-      </figcaption>
-    </figure>
-    <figure class="art-card" style="--tint:#e9e0d3">
-      <div class="placeholder"><span>05</span></div>
-      <figcaption>
-        <h3>作品標題五</h3>
-        <p>媒材 · 年份</p>
-      </figcaption>
-    </figure>
-    <figure class="art-card" style="--tint:#dde2e8">
-      <div class="placeholder"><span>06</span></div>
-      <figcaption>
-        <h3>作品標題六</h3>
-        <p>媒材 · 年份</p>
-      </figcaption>
-    </figure>
-  </div>
+  <div class="grid" id="gallery-grid"></div>
 </section>
 
 <section id="about" class="about">
   <h2>關於我</h2>
-  <p>這裡放一段簡短的自我介紹，說明你的創作理念、風格或背景。之後可以自由替換成你自己的文字。</p>
+  <p id="about-text">這裡放一段簡短的自我介紹，說明你的創作理念、風格或背景。之後可以自由替換成你自己的文字。</p>
 </section>
 
 <section id="contact" class="contact">
   <h2>聯絡方式</h2>
-  <p><a href="mailto:hannah.y1000708@gmail.com">hannah.y1000708@gmail.com</a></p>
-  <p class="socials">
+  <p><a id="contact-email" href="mailto:hannah.y1000708@gmail.com">hannah.y1000708@gmail.com</a></p>
+  <p class="socials" id="contact-socials">
     <a href="#">Instagram</a>
     <a href="#">Behance</a>
   </p>
@@ -89,5 +60,6 @@
   <p>&copy; 2026 Hannah. All rights reserved.</p>
 </footer>
 
+<script src="site.js"></script>
 </body>
 </html>

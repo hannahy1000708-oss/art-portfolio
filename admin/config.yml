@@ -1,0 +1,35 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "images/uploads"
+
+collections:
+  - name: "works"
+    label: "作品集"
+    files:
+      - name: "gallery"
+        label: "作品列表"
+        file: "content/works.json"
+        fields:
+          - { label: "作品", name: "items", widget: "list", fields: [
+              { label: "標題", name: "title", widget: "string" },
+              { label: "媒材 / 年份", name: "medium", widget: "string", required: false },
+              { label: "圖片", name: "image", widget: "image", required: false },
+              { label: "底色（沒有圖片時顯示）", name: "tint", widget: "color", required: false },
+            ] }
+
+  - name: "settings"
+    label: "網站設定"
+    files:
+      - name: "general"
+        label: "一般設定"
+        file: "content/settings.json"
+        fields:
+          - { label: "首頁標題", name: "heroTitle", widget: "string" }
+          - { label: "首頁副標", name: "heroSub", widget: "string" }
+          - { label: "關於我文字", name: "aboutText", widget: "text" }
+          - { label: "聯絡信箱", name: "contactEmail", widget: "string" }
+          - { label: "Instagram 連結", name: "instagramUrl", widget: "string", required: false }
+          - { label: "Behance 連結", name: "behanceUrl", widget: "string", required: false }
