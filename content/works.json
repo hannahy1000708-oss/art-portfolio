@@ -1,10 +1,40 @@
 {
   "items": [
-    { "title": "作品標題一", "medium": "媒材 · 年份", "image": "", "tint": "#f8d9c4" },
-    { "title": "作品標題二", "medium": "媒材 · 年份", "image": "", "tint": "#cbe6f0" },
-    { "title": "作品標題三", "medium": "媒材 · 年份", "image": "", "tint": "#f6c6b9" },
-    { "title": "作品標題四", "medium": "媒材 · 年份", "image": "", "tint": "#d9ecd0" },
-    { "title": "作品標題五", "medium": "媒材 · 年份", "image": "", "tint": "#f9e2a7" },
-    { "title": "作品標題六", "medium": "媒材 · 年份", "image": "", "tint": "#e6dced" }
+    {
+      "title": "Creative Practice",
+      "medium": "Sketch · 2026",
+      "image": "images/uploads/img_5892.jpeg",
+      "tint": "#f8d9c4"
+    },
+    {
+      "title": "Creative Practice",
+      "medium": "Sketch · 2026",
+      "image": "images/uploads/img_3780.jpeg",
+      "tint": "#cbe6f0"
+    },
+    {
+      "title": "Creative Practice",
+      "medium": "Sketch · 2025",
+      "image": "images/uploads/img_5859.jpeg",
+      "tint": "#f6c6b9"
+    },
+    {
+      "title": "Hannah ",
+      "medium": "Digital art · Yellow ver· 2026",
+      "image": "images/uploads/img_6084.jpeg",
+      "tint": "#d9ecd0"
+    },
+    {
+      "title": "Hannah ",
+      "medium": "Digital art ·Blue ver· 2026",
+      "image": "images/uploads/img_6083.jpeg",
+      "tint": "#f9e2a7"
+    },
+    {
+      "title": "A Taste of Spain",
+      "medium": "Digital art · 2026",
+      "image": "images/uploads/img_6238.jpeg",
+      "tint": "#e6dced"
+    }
   ]
 }
