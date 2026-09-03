@@ -7,6 +7,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script>
+  (function () {
+    var saved = localStorage.getItem('theme');
+    if (saved) document.documentElement.dataset.theme = saved;
+  })();
+</script>
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
@@ -76,6 +82,14 @@
     <a href="#">Behance</a>
   </p>
 </section>
+
+<div class="theme-picker" role="group" aria-label="選擇背景色調">
+  <button class="theme-swatch" data-theme="" style="background:#f2795d" aria-label="原色（暖杏）"></button>
+  <button class="theme-swatch" data-theme="tiffany" style="background:#3fb6a8" aria-label="Tiffany 綠"></button>
+  <button class="theme-swatch" data-theme="pink" style="background:#e8759f" aria-label="粉色"></button>
+  <button class="theme-swatch" data-theme="yellow" style="background:#e3ab1f" aria-label="黃色"></button>
+  <button class="theme-swatch" data-theme="blue" style="background:#4f9bc9" aria-label="藍色"></button>
+</div>
 
 <footer>
   <p>&copy; 2026 Hannah. All rights reserved.</p>

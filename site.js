@@ -104,6 +104,24 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeLightbox();
 });
 
+function setTheme(theme) {
+  if (theme) {
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem('theme', theme);
+  } else {
+    delete document.documentElement.dataset.theme;
+    localStorage.removeItem('theme');
+  }
+  document.querySelectorAll('.theme-swatch').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.theme === theme);
+  });
+}
+
+document.querySelectorAll('.theme-swatch').forEach(btn => {
+  btn.addEventListener('click', () => setTheme(btn.dataset.theme));
+});
+setTheme(document.documentElement.dataset.theme || '');
+
 Promise.all([
   loadJSON('content/works.json'),
   loadJSON('content/stickers.json'),
