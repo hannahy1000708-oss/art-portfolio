@@ -8,8 +8,17 @@ async function loadJSON(path) {
   }
 }
 
-function renderGallery(items) {
-  const grid = document.getElementById('gallery-grid');
+function renderGallery(items, gridId, sectionId) {
+  const grid = document.getElementById(gridId || 'gallery-grid');
+  if (sectionId) {
+    const section = document.getElementById(sectionId);
+    if (!items || !items.length) {
+      section.style.display = 'none';
+      return;
+    }
+    section.style.display = '';
+  }
+
   grid.innerHTML = items.map((item, i) => {
     const num = String(i + 1).padStart(2, '0');
     const media = item.image
@@ -103,6 +112,6 @@ Promise.all([
 ]).then(([works, stickers, products, settings]) => {
   renderGallery((works && works.items) || []);
   renderLinkedGrid((stickers && stickers.items) || [], 'stickers', 'stickers-grid', '前往貼圖商店');
-  renderLinkedGrid((products && products.items) || [], 'products', 'products-grid', '前往購買');
+  renderGallery((products && products.items) || [], 'products-grid', 'products');
   renderSettings(settings || {});
 });

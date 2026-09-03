@@ -43,9 +43,9 @@ collections:
         fields:
           - { label: "產品", name: "items", widget: "list", fields: [
               { label: "名稱", name: "title", widget: "string" },
+              { label: "說明（選填）", name: "medium", widget: "string", required: false },
               { label: "圖片", name: "image", widget: "image", required: false },
-              { label: "購買連結", name: "link", widget: "string", hint: "例如 LINE 貼圖商店、蝦皮、Etsy 的連結" },
-              { label: "價格（選填）", name: "price", widget: "string", required: false },
+              { label: "底色（沒有圖片時顯示）", name: "tint", widget: "color", required: false },
             ] }
 
   - name: "settings"
